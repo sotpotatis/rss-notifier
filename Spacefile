@@ -1,0 +1,18 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+    - name: rss-notifier
+      engine: python3.9
+      src: .
+      primary: true
+      run: gunicorn server:app
+      public_routes:
+            - "/"
+            - "/subscribe"
+            - "/unsubscribe"
+      actions:
+        - id: send_emails
+          name: "Check for & Send emails"
+          description: "Updates the RSS feed and sends emails if needed"
+          trigger: "schedule"
+          default_interval: "*/20 * * * *" # Every 20th minute

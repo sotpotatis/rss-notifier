@@ -1,0 +1,28 @@
+[general]
+timezone="Europe/Stockholm"
+[server]
+debug=false
+port=8080
+[server.api_limits] # Define access limits
+subscribe="4 per minute;8 per hour"
+unsubscribe="10 per minute"
+[server.deta] # Deta.dev specific config
+start_sender_event_name = "send_emails"
+[database] # FaunaDB database secrets
+secret=""
+[email]
+templates_path="email_templates" # Relative path for email templates
+unsubscribe_url="https://example.com/email_subscripiton/unsubscribe"
+[email.mailersend]
+api_token=""
+plan="no_plan"
+[email.myemailverifier]
+api_key=""
+[email.from] # Who is sending the email
+name="YOUR_NAME"
+email_address="noreply@example.com"
+[email.subjects]
+new_entry="Albins blogg: Nytt inlägg"
+[rss_feed]
+source="http://localhost:1313/index.xml"
+update_interval=360 # Update interval in seconds
